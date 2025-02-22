@@ -68,10 +68,47 @@ To build the CSS for the extension, use the following commands:
    npm install
    ```
 
-2. Build the Tailwind CSS:
+2. Build the Extension:
    ```bash
    npm run build
    ```
+# How to Load the Extension in the Browser
+
+## 3. Load the Extension
+
+### 3.1 Open the Browser
+
+Open **Google Chrome** or any Chromium-based browser.
+
+### 3.2 Go to the Extensions Page
+
+Enter the following URL in the address bar and press `Enter`:
+```bash
+chrome://extensions/
+```
+
+### 3.3 Enable Developer Mode
+
+In the upper right corner, toggle the switch to enable **Developer Mode**.
+
+### 3.4 Load the Extension Manually
+
+Click the **Load unpacked** button.
+
+### 3.5 Select the `dist` Folder
+
+A file explorer will open. Navigate to the `dist` folder generated during the build process and select it.
+
+### 3.6 Confirm Installation
+
+Once loaded, the extension will appear in the list of installed extensions. Make sure it is enabled.
+
+---
+
+✅ **Done!** Your extension is now loaded and ready to use.
+
+
+
 
 
  
