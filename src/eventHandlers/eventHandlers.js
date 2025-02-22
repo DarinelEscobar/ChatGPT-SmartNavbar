@@ -3,21 +3,35 @@
 import { replaceTextInDiv } from '../utils/utils.js';
 
 export function initializeEventHandlers(div, dropdownManager, state) {
-  if (window.__smartNavbarKeyDownInitialized) {
-    return;
-  }
-  window.__smartNavbarKeyDownInitialized = true;
 
-  function updateDebugInfo() {}
-  div.addEventListener('input', () => {
-    dropdownManager.handleInput(state.selectedCategory, state.escapedTriggerKey);
-  });
 
-  document.addEventListener(
-    'keydown',
-    function (e) {
+
+  if (!window.__smartNavbarGlobalKeyDownAttached) {
+    window.__smartNavbarGlobalKeyDownAttached = true;
+
+
+    if (!window.__smartNavbarDebugInfoElement) {
+      window.__smartNavbarDebugInfoElement = debugInfoElement;
+    }
+
+    const debugInfoElement = window.__smartNavbarDebugInfoElement || null;
+
+    function updateDebugInfo() {
+      const { selectedCategoryIndex, categories } = state;
+      const safeIndex = Math.max(0, Math.min(selectedCategoryIndex, categories.length - 1));
+      const catName = categories[safeIndex]?.category || 'Desconocido';
+      if (debugInfoElement) {
+        debugInfoElement.innerText = `Navbar Debug:\nÍndice actual: ${safeIndex}\nCategoría: ${catName}`;
+      }
+    }
+
+    updateDebugInfo();
+
+
+    document.addEventListener('keydown', function (e) {
+
       if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
-        const categories = state.categories;
+        const { categories } = state;
 
         if (e.key === 'ArrowLeft') {
           state.selectedCategoryIndex =
@@ -41,6 +55,7 @@ export function initializeEventHandlers(div, dropdownManager, state) {
           e.stopPropagation();
         }
       }
+
 
       if (!dropdownManager.dropdownElement.classList.contains('hidden')) {
         if (
@@ -74,7 +89,14 @@ export function initializeEventHandlers(div, dropdownManager, state) {
           }
         }
       }
-    },
-    true
-  );
+    }, true);
+  }
+
+
+
+
+
+  div.addEventListener('input', () => {
+    dropdownManager.handleInput(state.selectedCategory, state.escapedTriggerKey);
+  });
 }
