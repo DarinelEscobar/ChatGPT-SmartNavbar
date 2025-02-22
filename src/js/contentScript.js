@@ -79,7 +79,7 @@ import '../assets/components/canvasEditor.css';
 
       maximizeButtonContainer.style.position = 'fixed';
       maximizeButtonContainer.style.bottom = '30px';
-      maximizeButtonContainer.style.left = '30px'; 
+      maximizeButtonContainer.style.left = '30px';
       maximizeButtonContainer.style.zIndex = '1000';
       document.body.appendChild(maximizeButtonContainer);
     }
@@ -91,6 +91,20 @@ import '../assets/components/canvasEditor.css';
       openCanvasEditor();
     });
   }
+
+
+if (!window.__expandButtonObserver) {
+  window.__expandButtonObserver = new MutationObserver(() => {
+    const mainContainer = document.querySelector('#composer-background');
+
+    if (mainContainer && (!maximizeButtonContainer || !document.contains(maximizeButtonContainer))) {
+      createExpandButton();
+    }
+  });
+
+
+  window.__expandButtonObserver.observe(document.body, { childList: true, subtree: true });
+}
 
   createExpandButton();
 
