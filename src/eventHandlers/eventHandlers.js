@@ -1,8 +1,14 @@
-// eventHandlers.js
+
 
 import { replaceTextInDiv } from '../utils/utils.js';
 
 export function initializeEventHandlers(div, dropdownManager, state) {
+  if (window.__smartNavbarKeyDownInitialized) {
+    return;
+  }
+  window.__smartNavbarKeyDownInitialized = true;
+
+  function updateDebugInfo() {}
   div.addEventListener('input', () => {
     dropdownManager.handleInput(state.selectedCategory, state.escapedTriggerKey);
   });
@@ -10,32 +16,32 @@ export function initializeEventHandlers(div, dropdownManager, state) {
   document.addEventListener(
     'keydown',
     function (e) {
-      // Handle Navbar Navigation
       if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
         const categories = state.categories;
 
         if (e.key === 'ArrowLeft') {
-          // Navigate to the previous tab
           state.selectedCategoryIndex =
             (state.selectedCategoryIndex - 1 + categories.length) % categories.length;
           state.selectedCategory = categories[state.selectedCategoryIndex];
           state.updateNavbarSelection();
           dropdownManager.updateDropdown(state.selectedCategory, state.escapedTriggerKey);
+
+          updateDebugInfo();
           e.preventDefault();
           e.stopPropagation();
         } else if (e.key === 'ArrowRight') {
-          // Navigate to the next tab
           state.selectedCategoryIndex =
             (state.selectedCategoryIndex + 1) % categories.length;
           state.selectedCategory = categories[state.selectedCategoryIndex];
           state.updateNavbarSelection();
           dropdownManager.updateDropdown(state.selectedCategory, state.escapedTriggerKey);
+
+          updateDebugInfo();
           e.preventDefault();
           e.stopPropagation();
         }
       }
 
-      // Handle Dropdown Navigation
       if (!dropdownManager.dropdownElement.classList.contains('hidden')) {
         if (
           e.key === 'ArrowDown' ||
