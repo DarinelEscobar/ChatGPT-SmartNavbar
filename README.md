@@ -76,49 +76,63 @@ To build the CSS for the extension, use the following commands:
 
 ## 3. Load the Extension
 
-### 3.1 Open the Browser
-
-Open **Google Chrome** or any Chromium-based browser.
-
-### 3.2 Go to the Extensions Page
-
-Enter the following URL in the address bar and press `Enter`:
-```bash
-chrome://extensions/
-```
-
-### 3.3 Enable Developer Mode
-
-In the upper right corner, toggle the switch to enable **Developer Mode**.
-
-### 3.4 Load the Extension Manually
-
-Click the **Load unpacked** button.
-
-### 3.5 Select the `dist` Folder
-
-A file explorer will open. Navigate to the `dist` folder generated during the build process and select it.
-
-### 3.6 Confirm Installation
-
-Once loaded, the extension will appear in the list of installed extensions. Make sure it is enabled.
-
----
-
-✅ **Done!** Your extension is now loaded and ready to use.
-
-
-
-
-
- 
-
 ## Usage
 
 1. Build the extension's CSS using the above instructions.
 2. Load the extension into Chrome by navigating to `chrome://extensions/`.
 3. Enable Developer Mode and click "Load unpacked" to select the `dist` folder.
 4. The extension will be active on the ChatGPT page (https://chatgpt.com/*).
+
+
+✅ **Done!** Your extension is now loaded and ready to use.
+
+## 📸 Functionality in Action
+
+### 📝 Canvas Mode – Structured Prompt Editing  
+Structure your prompts with sections (`--OBJECTIVE`, `--CONTEXT`, `--HOW`) and edit them easily without viewing the entire prompt at once.  
+
+![Canvas Mode](Extension_IMG/CANVA.png)
+
+---
+
+### 🔍 Smart Dropdown Menu – Quick Prompt Access  
+Activate the **Smart Dropdown Menu** with `<<` to quickly select and insert prompts.  
+
+✔️ **Navigate Categories** using **LEFT/RIGHT arrows**.  
+✔️ **Search in "TODOS" Category** to find prompts by ID.  
+✔️ **Browse with UP/DOWN arrows** and press **Enter** to insert.  
+
+![Dropdown Menu](Extension_IMG/UI.png)
+
+---
+
+### ⚙️ Prompt Management – Create, Edit & Organize  
+Manage prompts with a modern and intuitive interface.  
+
+✔️ **Edit prompts in a modal window** for quick adjustments.  
+✔️ **Organize prompts into custom categories** to enhance workflow.  
+
+![Edit Modal](Extension_IMG/MODAL_EDIT_PROM.png)
+
+---
+
+### 📌 Popup Settings  
+From the popup menu, you can:  
+
+✔️ Customize the activation key (`<<` by default).  
+✔️ Enable or disable dropdown menu features.  
+✔️ Adjust general settings for an optimized workflow.  
+
+![Popup Settings](Extension_IMG/POPUP.png)
+
+---
+
+
+
+
+ 
+
+
 
 ## Contributing
 
