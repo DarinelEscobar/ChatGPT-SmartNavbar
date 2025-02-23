@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "ChatGPT Extension",
+  "name": "ChatGPT Prompt Manager: Save & Access Quickly",
   "version": "1.0",
-  "description": "Agrega un navbar y un menú desplegable interactivo en chat.openai.com",
+  "description": "Enhance ChatGPT with a smart navbar for quick prompt access, efficient management, and seamless navigation for productivity.",
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
@@ -13,7 +13,9 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://chatgpt.com/*"],
+      "matches": [
+        "https://chatgpt.com/*"
+      ],
       "js": ["js/contentScript.bundle.js"],
       "css": ["css/contentScript.css"]
     }
@@ -25,7 +27,9 @@
         "assets/icons/*.svg",
         "assets/icons/*.png"
       ],
-      "matches": ["https://chatgpt.com/*"]
+      "matches": [
+        "https://chatgpt.com/*"
+      ]
     }
   ],
   "permissions": ["storage", "windows", "tabs", "activeTab"]
